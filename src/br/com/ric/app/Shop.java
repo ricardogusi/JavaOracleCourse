@@ -1,11 +1,8 @@
 package br.com.ric.app;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.util.Locale;
+import java.util.Comparator;
 
-import br.com.ric.data.Drink;
-import br.com.ric.data.Food;
 import br.com.ric.data.Product;
 import br.com.ric.data.ProductManager;
 import br.com.ric.data.Rating;
@@ -13,46 +10,39 @@ import br.com.ric.data.Rating;
 public class Shop {
 	public static void main(String[] args) {
 		
-		Locale BRASIL = new Locale("pt", "BR");
+		
+		ProductManager pm = new ProductManager("pt-BR");
 		
 		
-		ProductManager pm = new ProductManager(BRASIL);
+		pm.createProduct(101, "Tea", BigDecimal.valueOf(1.99), Rating.NOT_RATED);
+//		pm.printProductReport(101);
+		pm.reviewProduct(101, Rating.FOUR_STAR, "Nice hot cup of tea");
+		pm.reviewProduct(101, Rating.TWO_STAR, "Rather weak tea");
+		pm.reviewProduct(101, Rating.FOUR_STAR, "Fine tea");
+		pm.reviewProduct(101, Rating.FOUR_STAR, "Good tea");
+		pm.reviewProduct(101, Rating.FIVE_STAR, "Nice hot cup of tea");
+		pm.reviewProduct(101, Rating.THREE_STAR, "Just add some lemon");
 		
+//		pm.printProductReport(101);
+
+//		pm.changeLocale("pt-BR");
 		
-		Product p1 = pm.createProduct(101, "Tea", BigDecimal.valueOf(1.99), Rating.NOT_RATED);
-		pm.printProductReport();
-		p1 = pm.reviewProduct(p1, Rating.FOUR_STAR, "Nice hot cup of tea");
-		p1 = pm.reviewProduct(p1, Rating.TWO_STAR, "Rather weak tea");
-		p1 = pm.reviewProduct(p1, Rating.FOUR_STAR, "Fine tea");
-		p1 = pm.reviewProduct(p1, Rating.FOUR_STAR, "Good tea");
-		p1 = pm.reviewProduct(p1, Rating.FIVE_STAR, "Nice hot cup of tea");
-		p1 = pm.reviewProduct(p1, Rating.THREE_STAR, "Just add some lemon");
+		pm.createProduct(102, "Coffee", BigDecimal.valueOf(1.99),Rating.NOT_RATED);
+		pm.reviewProduct(102, Rating.THREE_STAR, "Coffee was ok");
+		pm.reviewProduct(102, Rating.ONE_STAR, "Where is the mikl?");
+		pm.reviewProduct(102, Rating.FIVE_STAR, "It's perfect with ten spoons of sugar!");
+//		pm.printProductReport(102);
 		
-		pm.printProductReport();
-//		Product p2 = pm.createProduct(102, "Coffee", BigDecimal.valueOf(1.99), Rating.FOUR_STAR);
-//		Product p3 = pm.createProduct(103, "Cake", BigDecimal.valueOf(3.99), Rating.FIVE_STAR, LocalDate.now().plusDays(2));
-//		Product p4 = pm.createProduct(105, "Cookie", BigDecimal.valueOf(3.99), Rating.THREE_STAR, LocalDate.now().plusDays(3));
-//		Product p5 = p3.applyRating(Rating.THREE_STAR);
-//		Product p6 = pm.createProduct(104, "Chocolate", BigDecimal.valueOf(2.99), Rating.FIVE_STAR);
-//		Product p7 = pm.createProduct(104, "Chocolate", BigDecimal.valueOf(2.99), Rating.FIVE_STAR, LocalDate.now().plusDays(2));
-//		Product p8 = p4.applyRating(Rating.FIVE_STAR);
-//		Product p9 = p1.applyRating(Rating.TWO_STAR);
-//		
-//		System.out.println(p6.equals(p7));
-////		System.out.println(p1.getId() + " " + p1.getName() + " " + p1.getPrice() + " " + p1.getDiscount()
-////				+ " " + p1.getRating().getStars());
-//		
-//		System.out.println(p1);
-//		System.out.println(p2);
-//		System.out.println(p3);
-//		System.out.println(p4);
-//		System.out.println(p5);
-//		System.out.println(p8);
-//		System.out.println(p9);
+		Product p3 = pm.createProduct(103, "Cake", BigDecimal.valueOf(5.99), Rating.NOT_RATED);
+		p3 = pm.reviewProduct(p3, Rating.FOUR_STAR, "Cake was yummy");
+		p3 = pm.reviewProduct(p3, Rating.TWO_STAR, "A bit bitter");
+		p3 = pm.reviewProduct(p3, Rating.FIVE_STAR, "Delicious");
+//		pm.printProductReport(p3);		
 		
+		Comparator<Product> ratingSorter = (p1,p2) -> p2.getRating().ordinal() - p1.getRating().ordinal();
+		pm.printProducts(ratingSorter);
 		
-		
-		
+		pm.printProducts((p1,p2) -> p2.getPrice().compareTo(p1.getPrice()));
 	}
 
 }

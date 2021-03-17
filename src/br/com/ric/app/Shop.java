@@ -33,16 +33,19 @@ public class Shop {
 		pm.reviewProduct(102, Rating.FIVE_STAR, "It's perfect with ten spoons of sugar!");
 //		pm.printProductReport(102);
 		
-		Product p3 = pm.createProduct(103, "Cake", BigDecimal.valueOf(5.99), Rating.NOT_RATED);
-		p3 = pm.reviewProduct(p3, Rating.FOUR_STAR, "Cake was yummy");
-		p3 = pm.reviewProduct(p3, Rating.TWO_STAR, "A bit bitter");
-		p3 = pm.reviewProduct(p3, Rating.FIVE_STAR, "Delicious");
-//		pm.printProductReport(p3);		
+		pm.createProduct(103, "Cake", BigDecimal.valueOf(5.99), Rating.NOT_RATED);
+		pm.reviewProduct(103, Rating.FOUR_STAR, "Cake was yummy");
+		pm.reviewProduct(103, Rating.TWO_STAR, "A bit bitter");
+		 pm.reviewProduct(103, Rating.FIVE_STAR, "Delicious");
+		pm.printProductReport(103);		
 		
 		Comparator<Product> ratingSorter = (p1,p2) -> p2.getRating().ordinal() - p1.getRating().ordinal();
-		pm.printProducts(ratingSorter);
+					
+		pm.printProducts(p -> p.getPrice().floatValue() < 2, ratingSorter);
 		
-		pm.printProducts((p1,p2) -> p2.getPrice().compareTo(p1.getPrice()));
+		pm.getDiscounts().forEach((rating, discount) ->System.out.println(rating + "\t" + discount));
+		
+//		pm.printProducts((p1,p2) -> p2.getPrice().compareTo(p1.getPrice()));
 	}
 
 }

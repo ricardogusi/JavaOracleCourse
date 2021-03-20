@@ -1,0 +1,5 @@
+Hamburger, Preço: R$ 4,99, Nota: ★★★★★, Validade: 20/03/2021
+Review: ★★★★★	Very yummy
+Review: ★★★★☆	Really nice Hamburger
+Review: ★★★☆☆	Could be bigger
+Review: ★★☆☆☆	Very small

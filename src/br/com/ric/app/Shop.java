@@ -15,14 +15,15 @@ public class Shop {
 		
 		
 //		pm.createProduct(101, "Tea", BigDecimal.valueOf(1.99), Rating.NOT_RATED);
-		pm.parseProduct("D,101,Tea,1.99,0,2021-03-18");
-		pm.printProductReport(101);
-		
-		pm.parseReview("101,4,Nice");
-		pm.parseReview("101,2,Rather weak tea");
-		pm.parseReview("101,3,Fine tea");
-		
-		pm.printProductReport(101);
+//		pm.parseProduct("D,101,Tea,1.99,0,2021-03-18");
+//		pm.printProductReport(101);
+//		
+//		pm.parseReview("101,4,Nice");
+//		pm.parseReview("101,2,Rather weak tea");
+//		pm.parseReview("101,3,Fine tea");
+//		
+		pm.printProductReport(107);
+		pm.printProductReport(108);
 //		pm.reviewProduct(101, Rating.FOUR_STAR, "Nice hot cup of tea");
 //		pm.reviewProduct(101, Rating.TWO_STAR, "Rather weak tea");
 //		pm.reviewProduct(101, Rating.FOUR_STAR, "Fine tea");
@@ -34,18 +35,18 @@ public class Shop {
 
 //		pm.changeLocale("pt-BR");
 		
-		pm.createProduct(102, "Coffee", BigDecimal.valueOf(1.99),Rating.NOT_RATED);
-		pm.reviewProduct(102, Rating.THREE_STAR, "Coffee was ok");
-		pm.reviewProduct(102, Rating.ONE_STAR, "Where is the mikl?");
-		pm.reviewProduct(102, Rating.FIVE_STAR, "It's perfect with ten spoons of sugar!");
-		pm.printProductReport(102);
-		
-		pm.createProduct(103, "Cake", BigDecimal.valueOf(5.99), Rating.NOT_RATED);
-		pm.reviewProduct(103, Rating.FOUR_STAR, "Cake was yummy");
-		pm.reviewProduct(103, Rating.TWO_STAR, "A bit bitter");
-		 pm.reviewProduct(103, Rating.FIVE_STAR, "Delicious");
-		pm.printProductReport(103);		
-		
+//		pm.createProduct(102, "Coffee", BigDecimal.valueOf(1.99),Rating.NOT_RATED);
+//		pm.reviewProduct(102, Rating.THREE_STAR, "Coffee was ok");
+//		pm.reviewProduct(102, Rating.ONE_STAR, "Where is the mikl?");
+//		pm.reviewProduct(102, Rating.FIVE_STAR, "It's perfect with ten spoons of sugar!");
+//		pm.printProductReport(102);
+//		
+//		pm.createProduct(103, "Cake", BigDecimal.valueOf(5.99), Rating.NOT_RATED);
+//		pm.reviewProduct(103, Rating.FOUR_STAR, "Cake was yummy");
+//		pm.reviewProduct(103, Rating.TWO_STAR, "A bit bitter");
+//		 pm.reviewProduct(103, Rating.FIVE_STAR, "Delicious");
+//		pm.printProductReport(103);		
+//		
 		Comparator<Product> ratingSorter = (p1,p2) -> p2.getRating().ordinal() - p1.getRating().ordinal();
 					
 		pm.printProducts(p -> p.getPrice().floatValue() < 2, ratingSorter);

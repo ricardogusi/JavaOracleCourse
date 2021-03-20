@@ -4,9 +4,12 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import static java.math.RoundingMode.HALF_UP;
+
+import java.io.Serializable;
+
 import static br.com.ric.data.Rating.*;
 
-public abstract class Product implements Rateable <Product>{
+public abstract class Product implements Rateable <Product>, Serializable{
 
 	public static final BigDecimal DISCOUNT_RATE = BigDecimal.valueOf(0.1);
 	private int id; 
